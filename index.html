@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="library.js" defer></script>
     <title>Odin Library</title>
   </head>
@@ -11,12 +11,55 @@
     <div class="header">
       <h1>Library</h1>
     </div>
+
     <div class="unread-book-container">
       <h2>Unread Books</h2>
-      
+      <button class="add-book-btn">Add New Book</button>
     </div>
+
     <div class="read-book-container">
       <h2>Read Books</h2>
     </div>
+
+    <form class="add-book-form">
+      <div>
+        <label for="title">Book's Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="e.g. Harry Potter"
+          required
+        />
+      </div>
+      <div>
+        <label for="author">Book's Author</label>
+        <input
+          type="text"
+          id="author"
+          name="author"
+          placeholder="e.g. J.K. Rowling"
+          required
+        />
+      </div>
+      <div>
+        <label for="page-number">Number of Pages</label>
+        <input
+          type="text"
+          id="pages"
+          name="page-number"
+          placeholder="e.g. 100"
+          required
+        />
+      </div>
+      <div>
+        <label for="status">Read?</label>
+        <input type="checkbox" id="status" name="status" />
+      </div>
+      <div>
+        <button class="cancel-btn">Cancel</button>
+        <button class="accept-btn">Submit</button>
+      </div>
+    </form>
   </body>
 </html>

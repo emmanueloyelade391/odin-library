@@ -33,7 +33,7 @@ function addBookToLibrary(title, author, pages, status) {
 
     const completed = document.createElement("p");
     completed.classList = "completed";
-    completed.textContent = book.completed;
+    completed.textContent = book.status;
     bookCard.appendChild(completed);
 
     unreadBookContainer.appendChild(bookCard);
@@ -41,6 +41,34 @@ function addBookToLibrary(title, author, pages, status) {
 }
 
 const unreadBookContainer = document.querySelector(".unread-book-container");
+
+const addBookForm = document.querySelector(".add-book-form");
+
+const acceptBtn = document.querySelector(".accept-btn");
+
+acceptBtn.addEventListener("click", (e) => {
+  // e.preventDefault();
+  const inputTitle = document.querySelector("#title");
+  const inputAuthor = document.querySelector("#author");
+  const inputPages = document.querySelector("#pages");
+  const inputStatus = document.querySelector("#status");
+
+  if (( inputTitle.value != "") &&
+      ( inputAuthor.value != "") &&
+      ( inputPages.value != "") 
+    ) {
+    e.preventDefault();
+
+    if (inputStatus.checked) {
+    inputStatus.value = "Read";
+    } else {
+      inputStatus.value = "Not read";
+    }
+    
+    addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputStatus.value);
+    addBookForm.reset();
+  }
+}); 
 
 const book1 = {
   id: crypto.randomUUID(),
