@@ -45,7 +45,6 @@ const addBookForm = document.querySelector(".add-book-form");
 const acceptBtn = document.querySelector(".accept-btn");
 
 acceptBtn.addEventListener("click", (e) => {
-  // e.preventDefault();
   const inputTitle = document.querySelector("#title");
   const inputAuthor = document.querySelector("#author");
   const inputPages = document.querySelector("#pages");
@@ -86,8 +85,6 @@ const book2 = {
 
 myLibrary.push(book1);
 myLibrary.push(book2);
-
-// let initialBooks = [book1, book2];
 
 for (let book of myLibrary) {
   const bookCard = document.createElement("div");
