@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, status) {
   this.id = crypto.randomUUID();
@@ -12,32 +12,30 @@ function addBookToLibrary(title, author, pages, status) {
   const newBook = new Book(title, author, pages, status);
   myLibrary.push(newBook);
 
-  for (const book of myLibrary) {
-    const bookCard = document.createElement("div");
-    bookCard.classList = "book-card";
+  const bookCard = document.createElement("div");
+  bookCard.classList = "book-card";
 
-    const title = document.createElement("p");
-    title.classList = "title";
-    title.textContent = book.title;
-    bookCard.appendChild(title);
+  const bookTitle = document.createElement("p");
+  bookTitle.classList = "title";
+  bookTitle.textContent = myLibrary.at(-1).title;
+  bookCard.appendChild(bookTitle);
 
-    const author = document.createElement("p");
-    author.classList = "author";
-    author.textContent = book.author;
-    bookCard.appendChild(author);
+  const bookAuthor = document.createElement("p");
+  bookAuthor.classList = "author";
+  bookAuthor.textContent = myLibrary.at(-1).author;
+  bookCard.appendChild(bookAuthor);
 
-    const pages = document.createElement("p");
-    pages.classList = "pages";
-    pages.textContent = book.pages;
-    bookCard.appendChild(pages);
+  const bookPages = document.createElement("p");
+  bookPages.classList = "pages";
+  bookPages.textContent = myLibrary.at(-1).pages;
+  bookCard.appendChild(bookPages);
 
-    const completed = document.createElement("p");
-    completed.classList = "completed";
-    completed.textContent = book.status;
-    bookCard.appendChild(completed);
+  const bookCompleted = document.createElement("p");
+  bookCompleted.classList = "completed";
+  bookCompleted.textContent = myLibrary.at(-1).status;
+  bookCard.appendChild(bookCompleted);
 
-    unreadBookContainer.appendChild(bookCard);
-  }
+  unreadBookContainer.appendChild(bookCard);
 }
 
 const unreadBookContainer = document.querySelector(".unread-book-container");
@@ -86,9 +84,12 @@ const book2 = {
   completed: "Read",
 };
 
-let bookList = [book1, book2];
+myLibrary.push(book1);
+myLibrary.push(book2);
 
-for (const book of bookList) {
+// let initialBooks = [book1, book2];
+
+for (let book of myLibrary) {
   const bookCard = document.createElement("div");
   bookCard.classList = "book-card";
 
