@@ -35,10 +35,15 @@ function addBookToLibrary(title, author, pages, status) {
   bookCompleted.textContent = myLibrary.at(-1).status;
   bookCard.appendChild(bookCompleted);
 
-  unreadBookContainer.appendChild(bookCard);
+  if (myLibrary.at(-1).status == "Read") {
+    readBookContainer.appendChild(bookCard);
+  } else {
+    unreadBookContainer.appendChild(bookCard);
+  }
 }
 
 const unreadBookContainer = document.querySelector(".unread-book-container");
+const readBookContainer = document.querySelector(".read-book-container");
 
 const addBookForm = document.querySelector(".add-book-form");
 
