@@ -45,9 +45,19 @@ function addBookToLibrary(title, author, pages, status) {
 const unreadBookContainer = document.querySelector(".unread-book-container");
 const readBookContainer = document.querySelector(".read-book-container");
 
+const addBookBtn = document.querySelector(".add-book-btn");
 const addBookForm = document.querySelector(".add-book-form");
-
+const cancelBtn = document.querySelector(".cancel-btn");
 const acceptBtn = document.querySelector(".accept-btn");
+const formDialog = document.querySelector("#form-dialog");
+
+addBookBtn.addEventListener("click", (e) => {
+  formDialog.showModal();
+});
+
+cancelBtn.addEventListener("click", (e) => {
+  formDialog.close();
+});
 
 acceptBtn.addEventListener("click", (e) => {
   const inputTitle = document.querySelector("#title");
@@ -69,6 +79,7 @@ acceptBtn.addEventListener("click", (e) => {
     
     addBookToLibrary(inputTitle.value, inputAuthor.value, inputPages.value, inputStatus.value);
     addBookForm.reset();
+    formDialog.close();
   }
 }); 
 
