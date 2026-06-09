@@ -35,6 +35,14 @@ function addBookToLibrary(title, author, pages, status) {
   bookCompleted.textContent = myLibrary.at(-1).status;
   bookCard.appendChild(bookCompleted);
 
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList = "deleteBtn";
+  deleteBtn.textContent = "Delete book";
+  deleteBtn.addEventListener("click", (event) => {
+    event.target.parentElement.remove();
+  });
+  bookCard.appendChild(deleteBtn);
+
   if (myLibrary.at(-1).status == "Read") {
     readBookContainer.appendChild(bookCard);
   } else {
@@ -125,6 +133,14 @@ for (let book of myLibrary) {
   completed.classList = "completed";
   completed.textContent = book.completed;
   bookCard.appendChild(completed);
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.classList = "deleteBtn";
+  deleteBtn.textContent = "Delete book";
+  deleteBtn.addEventListener("click", (event) => {
+    event.target.parentElement.remove();
+  });
+  bookCard.appendChild(deleteBtn);
 
   unreadBookContainer.appendChild(bookCard);
 }
