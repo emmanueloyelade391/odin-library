@@ -8,6 +8,14 @@ function Book(title, author, pages, status) {
   this.status = status; 
 }
 
+Book.prototype.toggleBook = function(checkBox) {
+  if (checkBox.checked == true) {
+    readBookContainer.appendChild(checkBox.parentElement);
+  } else {
+    unreadBookContainer.appendChild(checkBox.parentElement);
+  }
+};
+
 function addBookToLibrary(title, author, pages, status) {
   const newBook = new Book(title, author, pages, status);
   myLibrary.push(newBook);
@@ -43,9 +51,20 @@ function addBookToLibrary(title, author, pages, status) {
   });
   bookCard.appendChild(deleteBtn);
 
+  const toggleStatusBtn = document.createElement("input");
+  toggleStatusBtn.id = "toggleStatusBtn";
+  toggleStatusBtn.type = "checkbox";
+  toggleStatusBtn.name = "toggleStatus";
+  toggleStatusBtn.addEventListener("click", (event) => {
+    newBook.toggleBook(event.target);
+  });
+
   if (myLibrary.at(-1).status == "Read") {
+    toggleStatusBtn.checked = true;
+    bookCard.appendChild(toggleStatusBtn);
     readBookContainer.appendChild(bookCard);
   } else {
+    bookCard.appendChild(toggleStatusBtn);
     unreadBookContainer.appendChild(bookCard);
   }
 }
@@ -141,6 +160,19 @@ for (let book of myLibrary) {
     event.target.parentElement.remove();
   });
   bookCard.appendChild(deleteBtn);
+
+  const toggleStatusBtn = document.createElement("input");
+  toggleStatusBtn.id = "toggleStatusBtn";
+  toggleStatusBtn.type = "checkbox";
+  toggleStatusBtn.name = "toggleStatus";
+  toggleStatusBtn.addEventListener("click", (event) => {
+    if (event.target.checked) {
+      readBookContainer.appendChild(event.target.parentElement);
+    } else {
+      unreadBookContainer.appendChild(event.target.parentElement);
+    }
+  });
+  bookCard.appendChild(toggleStatusBtn);
 
   unreadBookContainer.appendChild(bookCard);
 }
