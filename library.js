@@ -1,5 +1,7 @@
+// An array that holds all the book objects in the program.
 let myLibrary = [];
 
+// An object constructor that let's users create their own books.
 function Book(title, author, pages, status) {
   this.id = crypto.randomUUID();
   this.title = title;
@@ -8,6 +10,8 @@ function Book(title, author, pages, status) {
   this.status = status; 
 }
 
+/* A function available to every book made with the book constructor,
+   which allows users to change the status of a book on the page. */
 Book.prototype.toggleBook = function(checkBox) {
   if (checkBox.checked == true) {
     readBookContainer.appendChild(checkBox.parentElement);
@@ -16,6 +20,9 @@ Book.prototype.toggleBook = function(checkBox) {
   }
 };
 
+/* Creates a container to hold an added book's information and adds
+   it to the read books container or the unread books container
+   depending on the added book's status. */
 function addBookToLibrary(title, author, pages, status) {
   const newBook = new Book(title, author, pages, status);
   myLibrary.push(newBook);
@@ -70,23 +77,30 @@ function addBookToLibrary(title, author, pages, status) {
   }
 }
 
+/* Get a reference to the unread book container and the read book container. 
+   to edit them. */
 const unreadBookContainer = document.querySelector(".unread-book-container");
 const readBookContainer = document.querySelector(".read-book-container");
 
+// Get a reference to these pre-made elements to edut them. 
 const addBookBtn = document.querySelector(".add-book-btn");
 const addBookForm = document.querySelector(".add-book-form");
 const cancelBtn = document.querySelector(".cancel-btn");
 const acceptBtn = document.querySelector(".accept-btn");
 const formDialog = document.querySelector("#form-dialog");
 
+// Display the form inside a modal when clicked.
 addBookBtn.addEventListener("click", () => {
   formDialog.showModal();
 });
 
+// Hide the form inside the modal when clicked.
 cancelBtn.addEventListener("click", () => {
   formDialog.close();
 });
 
+/*Submit the form and use the inputted data to create a book 
+  and display it on the webpage. */
 acceptBtn.addEventListener("click", (event) => {
   const inputTitle = document.querySelector("#title");
   const inputAuthor = document.querySelector("#author");
@@ -111,6 +125,7 @@ acceptBtn.addEventListener("click", (event) => {
   }
 }); 
 
+// Premade books to show the user how books look on this webpage.
 const book1 = {
   id: crypto.randomUUID(),
   title: "A book",
