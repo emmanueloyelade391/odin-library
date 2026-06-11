@@ -79,15 +79,15 @@ const cancelBtn = document.querySelector(".cancel-btn");
 const acceptBtn = document.querySelector(".accept-btn");
 const formDialog = document.querySelector("#form-dialog");
 
-addBookBtn.addEventListener("click", (e) => {
+addBookBtn.addEventListener("click", () => {
   formDialog.showModal();
 });
 
-cancelBtn.addEventListener("click", (e) => {
+cancelBtn.addEventListener("click", () => {
   formDialog.close();
 });
 
-acceptBtn.addEventListener("click", (e) => {
+acceptBtn.addEventListener("click", (event) => {
   const inputTitle = document.querySelector("#title");
   const inputAuthor = document.querySelector("#author");
   const inputPages = document.querySelector("#pages");
@@ -97,7 +97,7 @@ acceptBtn.addEventListener("click", (e) => {
       ( inputAuthor.value != "") &&
       ( inputPages.value != "") 
     ) {
-    e.preventDefault();
+    event.preventDefault();
 
     if (inputStatus.checked) {
     inputStatus.value = "Read";
