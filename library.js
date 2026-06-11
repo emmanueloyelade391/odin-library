@@ -25,22 +25,22 @@ function addBookToLibrary(title, author, pages, status) {
 
   const bookTitle = document.createElement("p");
   bookTitle.classList = "title";
-  bookTitle.textContent = myLibrary.at(-1).title;
+  bookTitle.textContent = newBook.title;
   bookCard.appendChild(bookTitle);
 
   const bookAuthor = document.createElement("p");
   bookAuthor.classList = "author";
-  bookAuthor.textContent = myLibrary.at(-1).author;
+  bookAuthor.textContent = newBook.author;
   bookCard.appendChild(bookAuthor);
 
   const bookPages = document.createElement("p");
   bookPages.classList = "pages";
-  bookPages.textContent = myLibrary.at(-1).pages;
+  bookPages.textContent = newBook.pages;
   bookCard.appendChild(bookPages);
 
   const bookCompleted = document.createElement("p");
   bookCompleted.classList = "completed";
-  bookCompleted.textContent = myLibrary.at(-1).status;
+  bookCompleted.textContent = newBook.status;
   bookCard.appendChild(bookCompleted);
 
   const deleteBtn = document.createElement("button");
@@ -53,6 +53,7 @@ function addBookToLibrary(title, author, pages, status) {
 
   const toggleStatusBtn = document.createElement("input");
   toggleStatusBtn.id = "toggleStatusBtn";
+  toggleStatusBtn.classList = "toggleStatusBtn";
   toggleStatusBtn.type = "checkbox";
   toggleStatusBtn.name = "toggleStatus";
   toggleStatusBtn.addEventListener("click", (event) => {
@@ -163,6 +164,7 @@ for (let book of myLibrary) {
 
   const toggleStatusBtn = document.createElement("input");
   toggleStatusBtn.id = "toggleStatusBtn";
+  toggleStatusBtn.classList = "toggleStatusBtn";
   toggleStatusBtn.type = "checkbox";
   toggleStatusBtn.name = "toggleStatus";
   toggleStatusBtn.addEventListener("click", (event) => {
