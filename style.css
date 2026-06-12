@@ -1,7 +1,35 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif; 
+  box-sizing: border-box; 
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif, Arial, Helvetica, sans-serif;
+  background-color: rgb(232, 223, 238); 
+}
+
+.header {
+  padding: 20px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.538);
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+.unread-book-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-size: 35px;
 }
 
 .book-card {
