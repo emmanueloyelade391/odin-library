@@ -32,6 +32,21 @@ h2 {
   font-size: 35px;
 }
 
+.add-book-btn {
+  background-color: #ddeed1; 
+  border: 2px solid black;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center; 
+  gap: 18px;
+}
+
+.plus-sign {
+  width: 15px; 
+}
+
 .book-card {
   border: 1px solid black;
 }
