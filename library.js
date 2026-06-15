@@ -12,11 +12,11 @@ function Book(title, author, pages, status) {
 
 /* A function available to every book made with the book constructor,
    which allows users to change the status of a book on the page. */
-Book.prototype.toggleBook = function(checkBox) {
-  if (checkBox.checked == true) {
-    readBookContainer.appendChild(checkBox.parentElement);
+Book.prototype.toggleBook = function(checkbox) {
+  if (checkbox.checked == true) {
+    readBookCards.appendChild(checkbox.parentElement.parentElement.parentElement);
   } else {
-    unreadBookContainer.appendChild(checkBox.parentElement);
+    unreadBookCards.appendChild(checkbox.parentElement.parentElement.parentElement);
   }
 };
 
@@ -29,6 +29,10 @@ function addBookToLibrary(title, author, pages, status) {
 
   const bookCard = document.createElement("div");
   bookCard.classList = "book-card";
+  const bookCardBtnContainer = document.createElement("div");
+  bookCardBtnContainer.classList = "book-card-btn-container";
+  const toggleStatusContainer = document.createElement("div");
+  toggleStatusContainer.classList = "toggle-status-container";
 
   const bookTitle = document.createElement("p");
   bookTitle.classList = "title";
@@ -45,18 +49,28 @@ function addBookToLibrary(title, author, pages, status) {
   bookPages.textContent = newBook.pages;
   bookCard.appendChild(bookPages);
 
-  const bookCompleted = document.createElement("p");
-  bookCompleted.classList = "completed";
-  bookCompleted.textContent = newBook.status;
-  bookCard.appendChild(bookCompleted);
+  // const bookCompleted = document.createElement("p");
+  // bookCompleted.classList = "completed";
+  // bookCompleted.textContent = newBook.status;
+  // bookCard.appendChild(bookCompleted);
 
-  const deleteBtn = document.createElement("button");
-  deleteBtn.classList = "deleteBtn";
-  deleteBtn.textContent = "Delete book";
+  const deleteBtn = document.createElement("img");
+  deleteBtn.classList = "delete-btn";
+  deleteBtn.src = "images/trashcan.svg";
   deleteBtn.addEventListener("click", (event) => {
-    event.target.parentElement.remove();
+    event.target.parentElement.parentElement.remove();
   });
-  bookCard.appendChild(deleteBtn);
+  bookCardBtnContainer.appendChild(deleteBtn);
+
+  const toggleStatusBtnLabel = document.createElement("label");
+  toggleStatusBtnLabel.classList = "toggle-status-btn-label";
+  toggleStatusBtnLabel.htmlFor = "toggleStatusBtn";
+  toggleStatusContainer.appendChild(toggleStatusBtnLabel);
+
+  const bookIcon = document.createElement("img");
+  bookIcon.classList = "book-icon";
+  bookIcon.src = "images/opened-book.svg";
+  toggleStatusBtnLabel.appendChild(bookIcon);
 
   const toggleStatusBtn = document.createElement("input");
   toggleStatusBtn.id = "toggleStatusBtn";
@@ -67,20 +81,30 @@ function addBookToLibrary(title, author, pages, status) {
     newBook.toggleBook(event.target);
   });
 
-  if (myLibrary.at(-1).status == "Read") {
+  if (newBook.status == "Read") {
     toggleStatusBtn.checked = true;
-    bookCard.appendChild(toggleStatusBtn);
-    readBookContainer.appendChild(bookCard);
+    // bookCard.appendChild(toggleStatusBtn);
+    // readBookContainer.appendChild(bookCard);
+    toggleStatusContainer.appendChild(toggleStatusBtn);
+    bookCardBtnContainer.appendChild(toggleStatusContainer);
+    bookCard.appendChild(bookCardBtnContainer);
+    readBookCards.appendChild(bookCard);
   } else {
-    bookCard.appendChild(toggleStatusBtn);
-    unreadBookContainer.appendChild(bookCard);
+    // bookCard.appendChild(toggleStatusBtn);
+    // unreadBookContainer.appendChild(bookCard);
+    toggleStatusContainer.appendChild(toggleStatusBtn);
+    bookCardBtnContainer.appendChild(toggleStatusContainer);
+    bookCard.appendChild(bookCardBtnContainer);
+    unreadBookCards.appendChild(bookCard);
   }
 }
 
 /* Get a reference to the unread book container and the read book container. 
    to edit them. */
 const unreadBookContainer = document.querySelector(".unread-book-container");
+const unreadBookCards = document.querySelector(".unread-book-cards");
 const readBookContainer = document.querySelector(".read-book-container");
+const readBookCards = document.querySelector(".read-book-cards");
 
 // Get a reference to these pre-made elements to edut them. 
 const addBookBtn = document.querySelector(".add-book-btn");
@@ -148,6 +172,10 @@ myLibrary.push(book2);
 for (let book of myLibrary) {
   const bookCard = document.createElement("div");
   bookCard.classList = "book-card";
+  const bookCardBtnContainer = document.createElement("div");
+  bookCardBtnContainer.classList = "book-card-btn-container";
+  const toggleStatusContainer = document.createElement("div");
+  toggleStatusContainer.classList = "toggle-status-container";
 
   const title = document.createElement("p");
   title.classList = "title";
@@ -164,18 +192,33 @@ for (let book of myLibrary) {
   pages.textContent = book.pages;
   bookCard.appendChild(pages);
 
-  const completed = document.createElement("p");
-  completed.classList = "completed";
-  completed.textContent = book.completed;
-  bookCard.appendChild(completed);
+  // const completed = document.createElement("p");
+  // completed.classList = "completed";
+  // completed.textContent = book.completed;
+  // bookCard.appendChild(completed);
 
-  const deleteBtn = document.createElement("button");
-  deleteBtn.classList = "deleteBtn";
-  deleteBtn.textContent = "Delete book";
+  const deleteBtn = document.createElement("img");
+  deleteBtn.classList = "delete-btn";
+  deleteBtn.src = "images/trashcan.svg";
   deleteBtn.addEventListener("click", (event) => {
-    event.target.parentElement.remove();
+    event.target.parentElement.parentElement.remove();
   });
-  bookCard.appendChild(deleteBtn);
+  bookCardBtnContainer.appendChild(deleteBtn);
+
+  // const deleteIcon = document.createElement("img");
+  // deleteIcon.classList = "delete-icon";
+  // deleteIcon.src = "images/trashcan.svg";
+  // deleteBtn.appendChild(deleteIcon);
+
+  const toggleStatusBtnLabel = document.createElement("label");
+  toggleStatusBtnLabel.classList = "toggle-status-btn-label";
+  toggleStatusBtnLabel.htmlFor = "toggleStatusBtn";
+  toggleStatusContainer.appendChild(toggleStatusBtnLabel);
+
+  const bookIcon = document.createElement("img");
+  bookIcon.classList = "book-icon";
+  bookIcon.src = "images/opened-book.svg";
+  toggleStatusBtnLabel.appendChild(bookIcon);
 
   const toggleStatusBtn = document.createElement("input");
   toggleStatusBtn.id = "toggleStatusBtn";
@@ -184,12 +227,14 @@ for (let book of myLibrary) {
   toggleStatusBtn.name = "toggleStatus";
   toggleStatusBtn.addEventListener("click", (event) => {
     if (event.target.checked) {
-      readBookContainer.appendChild(event.target.parentElement);
+      readBookCards.appendChild(event.target.parentElement.parentElement.parentElement);
     } else {
-      unreadBookContainer.appendChild(event.target.parentElement);
+      unreadBookCards.appendChild(event.target.parentElement.parentElement.parentElement);
     }
   });
-  bookCard.appendChild(toggleStatusBtn);
+  toggleStatusContainer.appendChild(toggleStatusBtn);
+  bookCardBtnContainer.appendChild(toggleStatusContainer);
 
-  unreadBookContainer.appendChild(bookCard);
+  bookCard.appendChild(bookCardBtnContainer);
+  unreadBookCards.appendChild(bookCard);
 }

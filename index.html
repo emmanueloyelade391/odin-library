@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,55 +20,68 @@
           Add
         </button>
       </div>
+
+      <div class="unread-book-cards"></div>
     </div>
+
+    <!-- <hr> -->
 
     <div class="read-book-container">
       <h2>Read Books</h2>
+      <!--Continue by working on read book container by using the same logic as 
+      unread book container-->
+      <div class="read-book-cards"></div>
     </div>
 
     <dialog id="form-dialog" closedby="closerequest">
-      <form class="add-book-form">
-        <div>
-          <label for="title">Book's Title</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            placeholder="e.g. Harry Potter"
-            required
-          />
+      <div class="dialog-container">
+        <div class="dialog-title">
+          <h2>New <br>Book</h2>
         </div>
-        <div>
-          <label for="author">Book's Author</label>
-          <input
-            type="text"
-            id="author"
-            name="author"
-            placeholder="e.g. J.K. Rowling"
-            required
-          />
-        </div>
-        <div>
-          <label for="page-number">Number of Pages</label>
-          <input
-            type="text"
-            id="pages"
-            name="page-number"
-            placeholder="e.g. 100"
-            required
-          />
-        </div>
-        <div>
-          <label for="status">Read?</label>
-          <input type="checkbox" id="status" name="status" />
-        </div>
-        <div>
-          <button class="cancel-btn" value="cancel" formmethod="dialog">
-            Cancel
-          </button>
-          <button class="accept-btn" value="default">Submit</button>
-        </div>
-      </form>
+        <form class="add-book-form">
+          <div>
+            <label for="title">Book's Title</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="e.g. Harry Potter"
+              required
+            />
+          </div>
+          <div>
+            <label for="author">Book's Author</label>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              placeholder="e.g. J.K. Rowling"
+              required
+            />
+          </div>
+          <div>
+            <label for="page-number">Number of Pages</label>
+            <input
+              type="text"
+              id="pages"
+              name="page-number"
+              placeholder="e.g. 100"
+              required
+            />
+          </div>
+          <div class="status-container">
+            <label for="status">Read?</label>
+            <input type="checkbox" id="status" name="status" />
+          </div>
+          <div class="form-button-containers">
+            <button class="cancel-btn" value="cancel" formmethod="dialog">
+              Cancel
+            </button>
+            <button class="accept-btn" value="default">Submit</button>
+          </div>
+        </form>
+      </div>
+      
     </dialog>
   </body>
 </html>
